@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuur een E-mail</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555555;
+        }
+
+        input[type="email"], input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            border-color: #008080; /* Kleur van de rand van het tekstvak */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function sendMail() {
+            const from = document.getElementById('from').value;
+            const subject = document.getElementById('subject').value;
+            const body = document.getElementById('body').value;
+
+            const mailtoLink = `mailto:olifantje2011@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body + '\n\nVan: ' + from)}`;
+            window.location.href = mailtoLink;
+        }
+
+        document.addEventListener("keydown", function (event){
+            // Prevent default action if Ctrl (Windows) or Command (Mac) key is pressed
+            if (event.ctrlKey || event.metaKey){
+                event.preventDefault();
+            }
+            // Prevent default action if F12 key is pressed
+            if(event.keyCode == 123){
+                event.preventDefault();
+            }
+        });
+
+                // Prevent the context menu (right-click menu)
+                document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Een mail versturen wegens een probleem of opmerking</h1>
+        <form onsubmit="sendMail(); return false;">
+            <label for="from">Van:</label>
+            <input type="email" id="from" name="from" placeholder="Je e-mailadres" required>
+
+            <label for="subject">Onderwerp:</label>
+            <input type="text" id="subject" name="subject" placeholder="Onderwerp" required>
+
+            <label for="body">Bericht:</label>
+            <textarea id="body" name="body" rows="10" cols="30" placeholder="Schrijf hier je bericht..." required></textarea>
+
+            <button type="submit">Verstuur</button>
+        </form>
+    </div>
+</html>

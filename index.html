@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #7fffd4; /* Aquamarine */
+        }
+        
+        h1 {
+            color: #2e8b57; /* Sea green */
+        }
+        
+        p {
+            color: #483d8b; /* Dark slate blue */
+        }
+        
+        #chatMessages {
+            background-color: #ffffff; /* White */
+            border: 2px solid #008080; /* Teal */
+            padding: 0%;
+            height: 435px;
+            width: 1000px;
+            overflow-y: scroll;
+            margin-bottom: 0px;
+            border-radius: 1%;
+            background-image: url('images (1).jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }        
+        
+        #userInput {
+            width: 890px;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 2px solid #008080; /* Teal */
+        }
+        
+        #button, #loginButton, #registerButton {
+            background-color: #008080; /* Teal */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #button:hover, #loginButton:hover, #registerButton:hover {
+            background-color: #7fffd4; /* Aquamarine */
+        }
+        
+        #Footer {
+            margin-bottom: 2%;
+        }
+        
+        .footer {
+            margin-top: 30px;
+        }
+        
+        #typewriter {
+            font-family: monospace;
+            white-space: pre;
+            border-right: 2px solid black;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+        
+        #loginDiv, #registerDiv {
+            margin: 20px 0;
+        }
+        
+        #loginDiv input, #registerDiv input {
+            width: 300px;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 2px solid #008080; /* Teal */
+        }
+        
+        #loginDiv h2, #registerDiv h2 {
+            color: #2e8b57; /* Sea green */
+        }            
+    </style>
+</head>
+<body>
+<main>
+    <h1>Welkom bij MuziekAI</h1>
+    <div id="chatMessages"></div>
+    <input type="text" id="userInput" placeholder="Typ hier je bericht">
+    <button id="button" onclick="sendMessage()">Verstuur</button>
+</main>
+<script>
+    function sendMessage() {
+        var userInput = document.getElementById("userInput").value;
+        var chatMessages = document.getElementById("chatMessages");
+        var userMessage = document.createElement("div");
+        userMessage.textContent = "Jij: " + userInput;
+        chatMessages.appendChild(userMessage);
+        document.getElementById("userInput").value = ""; 
+        
+        var aiResponse;
+        switch(userInput.toLowerCase()) {
+            /* Begroetingen van MuziekAI */
+            case "hallo":
+            case "hi!":
+            case "":
+            case "yo":
+            case "hoi":
+            case "hi":
+            case "goedemorgen":
+            case "ewa":
+            case "Hallo!":
+            case "Hoi!":
+            case "Goedemorgen!":
+            case "Ewa":
+            case "Hey!":
+            case "Hey daar!":
+            case "Hallo, hoe gaat het?":
+            case "Hoi, fijn je te ontmoeten!":
+            case "Hey, alles goed?":
+            case "Hallo, alles goed?":
+            case "Hoi, wat leuk je te zien!":
+            case "Goedendag!":
+            case "Dag!":
+            case "Hey, hoe gaat het vandaag?":
+            case "Hallo, hoe is het met jou?":
+            case "Hoi, hoe is je dag?":
+            case "Hey, wat is er aan de hand?":
+            case "Hallo, heb je een goede dag?":
+            case "Hoi, wat ben je aan het doen?":
+            case "Goedemiddag!":
+            case "Hoi, heb je even tijd om te kletsen?":
+            case "Hallo, alles goed met je?":
+            case "Hey, hoe is het met je familie?":
+            case "Hoi, wat doe je vandaag?":
+            case "Hallo, hoe gaat het met werk/school?":
+            case "Hoi, lang niet gezien!":
+            case "Hey, wat leuk je weer te spreken!":
+            case "Hallo, hoe gaat het met je vrienden?":
+            case "Hoi, ik hoop dat je een geweldige dag hebt!":
+            case "Hallo, hoe is het leven?":
+            case "Hoi, heb je iets leuks gedaan vandaag?":
+            case "Hey, ik mis je!":
+            case "Hallo, hoe voel je je vandaag?":
+            case "Hoi, ik ben blij dat we elkaar weer spreken!":
+            case "Hallo, heb je nog plannen voor vandaag?":
+            case "Hoi, ik wilde even hallo zeggen!":
+            case "Hey, alles goed aan jouw kant?":
+            case "Hallo, ik hoop dat je je goed voelt!":
+            case "Hoi, wat is het nieuws?":
+            case "Hey, ik dacht aan je en wilde hallo zeggen!":
+            case "Hallo, hoe was je weekend?":
+            case "Hoi, wat heb je vandaag gedaan?":
+                aiResponse = "Hallo, ik ben MuziekAI, gemaakt om u meer kennis te geven over muziek";
+                break;
+            
+            case "Wat is muziek":
+                aiResponse = "Muziek of toonkunst is de kunstzinnige schikking en combinatie van de klanken van muziekinstrumenten en de menselijke stem om schoonheid van vorm dan wel uitdrukking van emotie te bereiken.";
+                break;
+
+            case "wat is een noot":
+                aiResponse = "Een noot is een symbool in de muzieknotatie dat de duur en hoogte van een klank aangeeft.";
+                break;
+        
+            case "wat is een toon":
+                aiResponse = "Een toon is een geluid met een specifieke frequentie en hoogte, zoals geproduceerd door muziekinstrumenten of de menselijke stem.";
+                break;
+        
+            case "wat is het verschil tussen een noot en een toon":
+                aiResponse = "Een noot verwijst naar een symbool in de muzieknotatie, terwijl een toon verwijst naar het geluid zelf.";
+                break;
+        
+            case "wat is een toonhoogte":
+                aiResponse = "Toonhoogte is de perceptie van frequentie in geluid, die de hoogte van een toon bepaalt, gemeten in hertz (Hz).";
+                break;
+        
+            case "wat is een octaaf":
+                aiResponse = "Een octaaf is de afstand tussen twee tonen met dezelfde naam, waarbij de frequentie van de hogere toon tweemaal zo hoog is als die van de lagere.";
+                break;
+        
+            case "wat is een interval":
+                aiResponse = "Een interval is de afstand tussen twee tonen, gemeten in toonafstanden zoals grote tertsen, kleine secundes, enzovoort.";
+                break;
+        
+            case "wat is een kruis in de muziek":
+                aiResponse = "Een kruis is een muzikaal symbool dat de toonhoogte van een noot met een halve toon verhoogt.";
+                break;
+        
+            case "wat is een mol in de muziek":
+                aiResponse = "Een mol is een muzikaal symbool dat de toonhoogte van een noot met een halve toon verlaagt.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een rust":
+                aiResponse = "Een rust in de muzieknotatie geeft aan dat er een stilte moet zijn van een bepaalde duur, zonder dat er een toon gespeeld wordt.";
+                break;
+        
+            case "wat is een triool":
+                aiResponse = "Een triool is een groep van drie noten die gespeeld worden in de tijd van twee noten van dezelfde duur, waardoor een specifiek ritmisch effect ontstaat.";
+                break;
+        
+            case "wat is een melodie":
+                aiResponse = "Een melodie is een reeks opeenvolgende tonen die samen een herkenbare eenheid vormen en vaak de hoofdrol spelen in een muziekstuk.";
+                break;
+        
+            case "wat is een ritme":
+                aiResponse = "Ritme is de regelmatige herhaling van accenten in de muziek, vaak bepaald door het patroon van lange en korte noten en rusten.";
+                break;
+        
+            case "wat is een akkoord":
+                aiResponse = "Een akkoord is een groep van drie of meer tonen die tegelijkertijd worden gespeeld of gezongen en harmonisch samen klinken.";
+                break;
+        
+            case "wat is een arpeggio":
+                aiResponse = "Een arpeggio is een patroon van individuele tonen in een akkoord die snel na elkaar worden gespeeld, vaak om een harmonisch effect te creëren.";
+                break;
+        
+            case "wat is een harmonie":
+                aiResponse = "Harmonie is de combinatie van verschillende tonen die tegelijkertijd worden gespeeld of gezongen en samen een aangename klank produceren.";
+                break;
+        
+            case "wat is een dissonantie":
+                aiResponse = "Een dissonantie is een combinatie van tonen die harmonisch onstabiel klinkt vanwege de spanning tussen de frequenties.";
+                break;
+        
+            case "wat is een consonantie":
+                aiResponse = "Een consonantie is een combinatie van tonen die harmonisch stabiel klinkt vanwege de harmonieuze verhouding tussen de frequenties.";
+                break;
+        
+            case "wat is een akkoordprogressie":
+                aiResponse = "Een akkoordprogressie is een opeenvolging van akkoorden die de harmonische structuur van een muziekstuk vormen, vaak gebruikt als basis voor melodieën en harmonieën.";
+                break;
+        
+            case "wat is een maatsoort":
+                aiResponse = "Een maatsoort is een ritmisch patroon dat aangeeft hoe de muziek in maten verdeeld moet worden, met een specifiek aantal tellen per maat.";
+                break;
+        
+            case "wat is een syncopatie":
+                aiResponse = "Syncopatie is een ritmisch effect waarbij accenten vallen op onverwachte momenten, tussen de gebruikelijke pulsen of tellen in de muziek.";
+                break;
+        
+            case "wat is een fermate":
+                aiResponse = "Een fermate is een symbool in de muzieknotatie dat aangeeft dat een noot of een rust langer aangehouden moet worden dan de aangegeven duur.";
+                break;
+        
+            case "wat is een decrescendo":
+                aiResponse = "Een decrescendo, ook bekend als diminuendo, is een geleidelijke afname in volume of intensiteit van de muziek, aangegeven door een afnemend symbool.";
+                break;
+        
+            case "wat is een crescendo":
+                aiResponse = "Een crescendo is een geleidelijke toename in volume of intensiteit van de muziek, aangegeven door een toenemend symbool.";
+                break;
+        
+            case "wat is een triller":
+                aiResponse = "Een triller is een snelle afwisseling tussen twee naburige tonen, vaak gebruikt als versiering in de muziek.";
+                break;
+        
+            case "wat is een vibrato":
+                aiResponse = "Een vibrato is een snelle variatie in toonhoogte rond een centrale toon, gebruikt om expressie en emotie aan de muziek toe te voegen.";
+                break;
+        
+            case "wat is een glissando":
+                aiResponse = "Een glissando is een snelle glijdende beweging tussen twee tonen, waarbij alle tussenliggende tonen hoorbaar zijn.";
+                break;
+        
+            case "wat is een articulatie":
+                aiResponse = "Articulatie verwijst naar de manier waarop een muzikant een toon aanvangt, onderhoudt of beëindigt, zoals staccato, legato, enzovoort.";
+                break;
+        
+            case "wat is een staccato":
+                aiResponse = "Staccato is een articulatie-effect waarbij tonen kort en los van elkaar worden gespeeld, met een korte duur en stilte ertussen.";
+                break;
+        
+            case "wat is een legato":
+                aiResponse = "Legato is een articulatie-effect waarbij tonen vloeiend en gebonden aan elkaar worden gespeeld, zonder duidelijke onderbrekingen tussen de noten.";
+                break;
+        
+            case "wat is een accent in de muziek":
+                aiResponse = "Een accent in de muziek geeft aan dat een bepaalde noot of passage sterker en nadrukkelijker gespeeld of gezongen moet worden dan de omringende noten.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een rust":
+                aiResponse = "Een rust in de muzieknotatie geeft aan dat er een stilte moet zijn van een bepaalde duur, zonder dat er een toon gespeeld wordt.";
+                break;
+        
+            case "wat is een triool":
+                aiResponse = "Een triool is een groep van drie noten die gespeeld worden in de tijd van twee noten van dezelfde duur, waardoor een specifiek ritmisch effect ontstaat.";
+                break;
+        
+            case "wat is een melodie":
+                aiResponse = "Een melodie is een reeks opeenvolgende tonen die samen een herkenbare eenheid vormen en vaak de hoofdrol spelen in een muziekstuk.";
+                break;
+        
+            case "wat is een ritme":
+                aiResponse = "Ritme is de regelmatige herhaling van accenten in de muziek, vaak bepaald door het patroon van lange en korte noten en rusten.";
+                break;
+        
+            case "wat is een akkoord":
+                aiResponse = "Een akkoord is een groep van drie of meer tonen die tegelijkertijd worden gespeeld of gezongen en harmonisch samen klinken.";
+                break;
+        
+            case "wat is een arpeggio":
+                aiResponse = "Een arpeggio is een patroon van individuele tonen in een akkoord die snel na elkaar worden gespeeld, vaak om een harmonisch effect te creëren.";
+                break;
+        
+            case "wat is een harmonie":
+                aiResponse = "Harmonie is de combinatie van verschillende tonen die tegelijkertijd worden gespeeld of gezongen en samen een aangename klank produceren.";
+                break;
+        
+            case "wat is een dissonantie":
+                aiResponse = "Een dissonantie is een combinatie van tonen die harmonisch onstabiel klinkt vanwege de spanning tussen de frequenties.";
+                break;
+        
+            case "wat is een consonantie":
+                aiResponse = "Een consonantie is een combinatie van tonen die harmonisch stabiel klinkt vanwege de harmonieuze verhouding tussen de frequenties.";
+                break;
+        
+            case "wat is een akkoordprogressie":
+                aiResponse = "Een akkoordprogressie is een opeenvolging van akkoorden die de harmonische structuur van een muziekstuk vormen, vaak gebruikt als basis voor melodieën en harmonieën.";
+                break;
+        
+            case "wat is een maatsoort":
+                aiResponse = "Een maatsoort is een ritmisch patroon dat aangeeft hoe de muziek in maten verdeeld moet worden, met een specifiek aantal tellen per maat.";
+                break;
+        
+            case "wat is een syncopatie":
+                aiResponse = "Syncopatie is een ritmisch effect waarbij accenten vallen op onverwachte momenten, tussen de gebruikelijke pulsen of tellen in de muziek.";
+                break;
+        
+            case "wat is een fermate":
+                aiResponse = "Een fermate is een symbool in de muzieknotatie dat aangeeft dat een noot of een rust langer aangehouden moet worden dan de aangegeven duur.";
+                break;
+        
+            case "wat is een decrescendo":
+                aiResponse = "Een decrescendo, ook bekend als diminuendo, is een geleidelijke afname in volume of intensiteit van de muziek, aangegeven door een afnemend symbool.";
+                break;
+        
+            case "wat is een crescendo":
+                aiResponse = "Een crescendo is een geleidelijke toename in volume of intensiteit van de muziek, aangegeven door een toenemend symbool.";
+                break;
+        
+            case "wat is een triller":
+                aiResponse = "Een triller is een snelle afwisseling tussen twee naburige tonen, vaak gebruikt als versiering in de muziek.";
+                break;
+        
+            case "wat is een vibrato":
+                aiResponse = "Een vibrato is een snelle variatie in toonhoogte rond een centrale toon, gebruikt om expressie en emotie aan de muziek toe te voegen.";
+                break;
+        
+            case "wat is een glissando":
+                aiResponse = "Een glissando is een snelle glijdende beweging tussen twee tonen, waarbij alle tussenliggende tonen hoorbaar zijn.";
+                break;
+        
+            case "wat is een articulatie":
+                aiResponse = "Articulatie verwijst naar de manier waarop een muzikant een toon aanvangt, onderhoudt of beëindigt, zoals staccato, legato, enzovoort.";
+                break;
+        
+            case "wat is een staccato":
+                aiResponse = "Staccato is een articulatie-effect waarbij tonen kort en los van elkaar worden gespeeld, met een korte duur en stilte ertussen.";
+                break;
+        
+            case "wat is een legato":
+                aiResponse = "Legato is een articulatie-effect waarbij tonen vloeiend en gebonden aan elkaar worden gespeeld, zonder duidelijke onderbrekingen tussen de noten.";
+                break;
+        
+            case "wat is een accent in de muziek":
+                aiResponse = "Een accent in de muziek geeft aan dat een bepaalde noot of passage sterker en nadrukkelijker gespeeld of gezongen moet worden dan de omringende noten.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een rust":
+                aiResponse = "Een rust in de muzieknotatie geeft aan dat er een stilte moet zijn van een bepaalde duur, zonder dat er een toon gespeeld wordt.";
+                break;
+        
+            case "wat is een triool":
+                aiResponse = "Een triool is een groep van drie noten die gespeeld worden in de tijd van twee noten van dezelfde duur, waardoor een specifiek ritmisch effect ontstaat.";
+                break;
+        
+            case "wat is een melodie":
+                aiResponse = "Een melodie is een reeks opeenvolgende tonen die samen een herkenbare eenheid vormen en vaak de hoofdrol spelen in een muziekstuk.";
+                break;
+        
+            case "wat is een ritme":
+                aiResponse = "Ritme is de regelmatige herhaling van accenten in de muziek, vaak bepaald door het patroon van lange en korte noten en rusten.";
+                break;
+        
+            case "wat is een akkoord":
+                aiResponse = "Een akkoord is een groep van drie of meer tonen die tegelijkertijd worden gespeeld of gezongen en harmonisch samen klinken.";
+                break;
+        
+            case "wat is een arpeggio":
+                aiResponse = "Een arpeggio is een patroon van individuele tonen in een akkoord die snel na elkaar worden gespeeld, vaak om een harmonisch effect te creëren.";
+                break;
+        
+            case "wat is een harmonie":
+                aiResponse = "Harmonie is de combinatie van verschillende tonen die tegelijkertijd worden gespeeld of gezongen en samen een aangename klank produceren.";
+                break;
+        
+            case "wat is een dissonantie":
+                aiResponse = "Een dissonantie is een combinatie van tonen die harmonisch onstabiel klinkt vanwege de spanning tussen de frequenties.";
+                break;
+        
+            case "wat is een consonantie":
+                aiResponse = "Een consonantie is een combinatie van tonen die harmonisch stabiel klinkt vanwege de harmonieuze verhouding tussen de frequenties.";
+                break;
+        
+            case "wat is een akkoordprogressie":
+                aiResponse = "Een akkoordprogressie is een opeenvolging van akkoorden die de harmonische structuur van een muziekstuk vormen, vaak gebruikt als basis voor melodieën en harmonieën.";
+                break;
+        
+            case "wat is een maatsoort":
+                aiResponse = "Een maatsoort is een ritmisch patroon dat aangeeft hoe de muziek in maten verdeeld moet worden, met een specifiek aantal tellen per maat.";
+                break;
+        
+            case "wat is een syncopatie":
+                aiResponse = "Syncopatie is een ritmisch effect waarbij accenten vallen op onverwachte momenten, tussen de gebruikelijke pulsen of tellen in de muziek.";
+                break;
+        
+            case "wat is een fermate":
+                aiResponse = "Een fermate is een symbool in de muzieknotatie dat aangeeft dat een noot of een rust langer aangehouden moet worden dan de aangegeven duur.";
+                break;
+        
+            case "wat is een decrescendo":
+                aiResponse = "Een decrescendo, ook bekend als diminuendo, is een geleidelijke afname in volume of intensiteit van de muziek, aangegeven door een afnemend symbool.";
+                break;
+        
+            case "wat is een crescendo":
+                aiResponse = "Een crescendo is een geleidelijke toename in volume of intensiteit van de muziek, aangegeven door een toenemend symbool.";
+                break;
+        
+            case "wat is een triller":
+                aiResponse = "Een triller is een snelle afwisseling tussen twee naburige tonen, vaak gebruikt als versiering in de muziek.";
+                break;
+        
+            case "wat is een vibrato":
+                aiResponse = "Een vibrato is een snelle variatie in toonhoogte rond een centrale toon, gebruikt om expressie en emotie aan de muziek toe te voegen.";
+                break;
+        
+            case "wat is een glissando":
+                aiResponse = "Een glissando is een snelle glijdende beweging tussen twee tonen, waarbij alle tussenliggende tonen hoorbaar zijn.";
+                break;
+        
+            case "wat is een articulatie":
+                aiResponse = "Articulatie verwijst naar de manier waarop een muzikant een toon aanvangt, onderhoudt of beëindigt, zoals staccato, legato, enzovoort.";
+                break;
+        
+            case "wat is een staccato":
+                aiResponse = "Staccato is een articulatie-effect waarbij tonen kort en los van elkaar worden gespeeld, met een korte duur en stilte ertussen.";
+                break;
+        
+            case "wat is een legato":
+                aiResponse = "Legato is een articulatie-effect waarbij tonen vloeiend en gebonden aan elkaar worden gespeeld, zonder duidelijke onderbrekingen tussen de noten.";
+                break;
+        
+            case "wat is een accent in de muziek":
+                aiResponse = "Een accent in de muziek geeft aan dat een bepaalde noot of passage sterker en nadrukkelijker gespeeld of gezongen moet worden dan de omringende noten.";
+                break;
+        
+            case "wat is een toonladder":
+                aiResponse = "Een toonladder is een opeenvolging van tonen gerangschikt volgens een specifiek patroon, zoals de majeur- of mineurladder.";
+                break;
+        
+            case "wat is een majeur toonladder":
+                aiResponse = "Een majeur toonladder is een toonladder die begint en eindigt op een majeur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een mineur toonladder":
+                aiResponse = "Een mineur toonladder is een toonladder die begint en eindigt op een mineur toon, met een specifiek patroon van hele en halve tonen.";
+                break;
+        
+            case "wat is een chromatische toonladder":
+                aiResponse = "Een chromatische toonladder bestaat uit twaalf opeenvolgende halve tonen binnen het octaaf, inclusief alle enharmonische gelijkwaardige tonen.";
+                break;
+        
+            case "wat is een pentatonische toonladder":
+                aiResponse = "Een pentatonische toonladder bestaat uit vijf tonen per octaaf, vaak gebruikt in verschillende muziektradities over de hele wereld.";
+                break;
+        
+            case "wat is een modale toonladder":
+                aiResponse = "Een modale toonladder is een toonladder die begint en eindigt op een modale toon, zoals dorisch, frygisch, lydisch, enzovoort.";
+                break;
+        
+            case "wat is een harmonische toonladder":
+                aiResponse = "Een harmonische toonladder omvat tonen die harmonisch gerelateerd zijn, vaak gebruikt voor het creëren van harmonieën en akkoorden.";
+                break;
+        
+            case "wat is een melodische toonladder":
+                aiResponse = "Een melodische toonladder heeft een specifiek patroon van tonen voor het spelen van melodieën, vaak met verschillende regels voor stijgende en dalende noten.";
+                break;
+        
+            case "wat is het verschil tussen een majeur en een mineur toonladder":
+                aiResponse = "Een majeur toonladder heeft een heldere en opgewekte klank, terwijl een mineur toonladder een droevigere of ernstigere klank heeft.";
+                break;
+        
+            case "wat is een enharmonische toon":
+                aiResponse = "Een enharmonische toon is een toon die twee verschillende namen heeft maar dezelfde toonhoogte, zoals C# (Cis) en Db (Des).";
+                break;
+        
+            case "wat is een toontrap":
+                aiResponse = "Een toontrap is een stapsgewijze beweging tussen opeenvolgende tonen in een toonladder, zoals een terts, kwart, kwint, enzovoort.";
+                break;
+        
+            case "wat is een rust":
+                aiResponse = "Een rust in de muzieknotatie geeft aan dat er een stilte moet zijn van een bepaalde duur, zonder dat er een toon gespeeld wordt.";
+                break;
+        
+            case "wat is een triool":
+                aiResponse = "Een triool is een groep van drie noten die gespeeld worden in de tijd van twee noten van dezelfde duur, waardoor een specifiek ritmisch effect ontstaat.";
+                break;
+        
+            case "wat is een melodie":
+                aiResponse = "Een melodie is een reeks opeenvolgende tonen die samen een herkenbare eenheid vormen en vaak de hoofdrol spelen in een muziekstuk.";
+                break;
+                
+            case "hoe gaat het met je":
+                aiResponse = "Het gaat goed met mij.";
+                break;
+            
+            default:
+            aiResponse = "Sorry, ik heb op deze vraag nog geen antwoord, binnenkort zal ik geupgrade worden en zal ik op meer vragen antwoord krijgen.";
+        }
+
+        var aiMessage = document.createElement("div");
+        aiMessage.textContent = "MuziekAI: " + aiResponse;
+        chatMessages.appendChild(aiMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight; 
+    }
+
+    // Event listener for Enter key press
+    document.getElementById("userInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+
+
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    document.addEventListener("keydown", function(event) {
+        if (event.ctrlKey || event.metaKey || event.altKey || event.key === "Fn") {
+            event.preventDefault();
+        }
+    });
+    function typewriterEffect(text, speed) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById("typewriter").innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        const text = "Dit is een typewritereffect!";
+        const speed = 100; // snelheid in milliseconden
+        typewriterEffect(text, speed);
+</script>
+
+</html>    
